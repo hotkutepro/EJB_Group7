@@ -25,6 +25,7 @@ public interface PostFacadeLocal {
     Post find(Object id);
 
     List<Post> findAll();
+    List<Post> findByCategory(String cateId);
 
     List<Post> findRange(int[] range);
 

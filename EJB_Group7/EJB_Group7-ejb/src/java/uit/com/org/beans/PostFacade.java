@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +28,9 @@ import uit.com.org.utilities.ConnectionFactory;
  */
 @Stateless
 public class PostFacade extends AbstractFacade<Post> implements PostFacadeLocal {
+
+    @EJB
+    private CategoryFacadeLocal categoryFacade;
     @PersistenceContext(unitName = "EJB_Group7-ejbPU")
     private EntityManager em;
     private Connection myConnection = null;
@@ -156,38 +160,44 @@ public class PostFacade extends AbstractFacade<Post> implements PostFacadeLocal 
        
         List<Post> _list = new ArrayList<>();
         Post post;
-        Category cate = new Category();
-//        try{
-//            myConnection = ConnectionFactory.getInstance().getConnection();
-//            myStatement = myConnection.createStatement();
-//            ResultSet rs = myStatement.executeQuery(sql);
-//            while(rs.next()){
-//                post = new Post();
-//                post.setPostID(rs.getString("PostID"));
-//                post.setCategoryID(((cate.getName())));
-//                String string = rs.getString("CategoryID");
-//                post.setCreateDate(rs.getString("CreateDate"));
-//                post.setTitle(rs.getString("Title"));
-//                post.setAuthor(rs.getString("Author"));
-//                post.setImage(rs.getString("Image"));
-//                post.setContent(rs.getString("Content"));
-//                post.setRate(rs.getInt("Rate"));
-//                _list.add(post);
-//            }
-//        } catch (SQLException | ClassNotFoundException e) {
-//        e.printStackTrace();
-//        }finally
-//        {
-//            try {
-//                if(myStatement != null)
-//                    myStatement.close();
-//                if(myConnection != null)
-//                    myConnection.close();
-//                } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-                   
+        Category cate = new Category();    
         return _list;
+    }
+
+    @Override
+    public List<Post> findByCategory(String cateId) {
+         String sql = "SELECT * FROM post WHERE CategoryID= '"+cateId+"'";
+         List<Post> posts=new ArrayList<Post>();
+         Post post=null;
+         try{
+            myConnection = ConnectionFactory.getInstance().getConnection();
+            myStatement = myConnection.createStatement();
+             try (ResultSet rs = myStatement.executeQuery(sql)) {
+                 while(rs.next()){
+                     post = new Post();
+                     post.setAuthor(rs.getString("Author"));
+                     //post.setCategoryID(categoryFacade.find(rs.getString("CategoryID")));
+                     post.setContent(rs.getString("Content"));
+                     post.setCreateDate(rs.getString("CreateDate"));
+                     post.setImage(rs.getString("Image"));
+                     post.setPostID(rs.getString("PostID"));
+                     post.setRate(Integer.parseInt(rs.getString("Rate")));
+                     post.setTitle(rs.getString("Title"));
+                     
+                     posts.add(post);
+                 }}
+
+        }catch (SQLException | ClassNotFoundException e) {
+        }finally{
+            try {
+                if(myStatement != null)
+                    myStatement.close();
+                if(myConnection != null)
+                    myConnection.close();
+                } catch (SQLException e) {
+            }
+        }
+         
+        return posts;
     }
 }
