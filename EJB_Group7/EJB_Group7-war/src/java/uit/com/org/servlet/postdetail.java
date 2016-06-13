@@ -13,35 +13,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uit.com.org.beans.CategoryFacadeLocal;
 import uit.com.org.beans.PostFacadeLocal;
 
 /**
  *
- * @author Quy.heo
+ * @author HomeSK
  */
-public class PostView extends HttpServlet {
-    @EJB
-    private CategoryFacadeLocal categoryFacade;
+public class postdetail extends HttpServlet {
+
     @EJB
     private PostFacadeLocal postFacade;
 
-    
-    
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+        
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String postId=request.getParameter("postid");        
-        PrintWriter out = response.getWriter();
-        out.print(postId);
+         String postId=request.getParameter("postid");              
         String url = "";
         request.setAttribute("post", postFacade.FindByPostID(postId));
         url = "details";
@@ -55,7 +49,7 @@ public class PostView extends HttpServlet {
         processRequest(request, response);
     }
 
-   
+
     @Override
     public String getServletInfo() {
         return "Short description";

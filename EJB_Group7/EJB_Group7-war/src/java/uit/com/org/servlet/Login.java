@@ -7,32 +7,37 @@ package uit.com.org.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import uit.com.org.beans.CategoryFacadeLocal;
+import uit.com.org.beans.PostFacadeLocal;
 import uit.com.org.beans.UserFacadeLocal;
+import uit.com.org.entities.Post;
 
 /**
  *
  * @author Quy.heo
  */
 public class Login extends HttpServlet {
+
+    @EJB
+    private PostFacadeLocal postFacade;
+
+    @EJB
+    private CategoryFacadeLocal categoryFacade;
+    
     @EJB
     private UserFacadeLocal userFacade;
 
     
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -51,7 +56,13 @@ public class Login extends HttpServlet {
                         HttpSession session = request.getSession(true);
                         session.setAttribute("ssUser", userFacade.getSessionUser());
                         session.setAttribute("ssRole", userFacade.getSessionRole());
-                        url = "";
+                        //session.setAttribute("categories", categoryFacade.findAll());                        
+                        //session.setAttribute("posts", postFacade.findAll());
+                        request.setAttribute("categories", categoryFacade.findAll());
+                        request.setAttribute("posts", postFacade.findAll());
+                        RequestDispatcher view = request.getRequestDispatcher("index");
+                        view.forward(request, response);
+                        url = "index";
                     }
                     else{
                         request.getSession().invalidate();
