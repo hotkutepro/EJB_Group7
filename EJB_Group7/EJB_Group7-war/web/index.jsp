@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -63,80 +64,28 @@
 
 						<!-- Posts
 						============================================= -->
+                                                
+                                                
 						<div id="posts" class="post-grid grid-container grid-3 clearfix" data-layout="fitRows">
-
-							<div class="entry clearfix">
-								<div class="entry-image clearfix">
-									<div class="fslider" data-animation="fade" data-pagi="false" data-lightbox="gallery">
-										<div class="flexslider">
-											<div class="slider-wrap">
-												<div class="slide"><a href="images/blog/full/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/2.jpg" alt="Standard Post with Gallery"></a></div>
-												<div class="slide"><a href="images/blog/full/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/3.jpg" alt="Standard Post with Gallery"></a></div>
-												<div class="slide"><a href="images/blog/full/12.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/12.jpg" alt="Standard Post with Gallery"></a></div>
-												<div class="slide"><a href="images/blog/full/13.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/13.jpg" alt="Standard Post with Gallery"></a></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="entry-title">
-									<h2><a href="blog-single-thumbs.html">This is a Standard post with Fade Gallery</a></h2>
-								</div>
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 3rd Mar 2014</li>
-									<li><a href="blog-single-thumbs.html#comments"><i class="icon-comments"></i> 21</a></li>
-									<li><a href="#"><i class="icon-picture"></i></a></li>
-								</ul>
-								<div class="entry-content">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-									<a href="blog-single-thumbs.html"class="more-link">Read More</a>
-								</div>
-							</div>
-
-							<div class="entry clearfix">
+                                                    <c:forEach items="${posts}" var="post">
+                                                        <div class="entry clearfix">
 								<div class="entry-image">
-									<iframe width="560" height="315" src="http://www.youtube.com/embed/SZEflIVnhH8" frameborder="0" allowfullscreen></iframe>
+									<a href="images/post/${post.getImage()}" data-lightbox="image"><img class="image_fade" src="images/post/${post.getImage()}" alt="Standard Post with Image"></a>
 								</div>
 								<div class="entry-title">
-									<h2><a href="blog-single-full.html">This is a Standard post with a Youtube Video</a></h2>
+									<h2><a href="postdetail?postid=${post.getPostID()}">${post.getTitle()}</a></h2>
 								</div>
 								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 30th Apr 2014</li>
-									<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 34</a></li>
-									<li><a href="#"><i class="icon-film"></i></a></li>
+									<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
+									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+									<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 								</ul>
 								<div class="entry-content">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-									<a href="blog-single-full.html"class="more-link">Read More</a>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim c</p>
+									<a href="postdetail?postid=${post.getPostID()}"class="more-link">Read More</a>
 								</div>
 							</div>
-
-							<div class="entry clearfix">
-								<div class="entry-image clearfix">
-									<div class="fslider" data-animation="fade" data-pagi="false" data-lightbox="gallery">
-										<div class="flexslider">
-											<div class="slider-wrap">
-												<div class="slide"><a href="images/blog/full/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/2.jpg" alt="Standard Post with Gallery"></a></div>
-												<div class="slide"><a href="images/blog/full/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/3.jpg" alt="Standard Post with Gallery"></a></div>
-												<div class="slide"><a href="images/blog/full/12.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/12.jpg" alt="Standard Post with Gallery"></a></div>
-												<div class="slide"><a href="images/blog/full/13.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/blog/grid/13.jpg" alt="Standard Post with Gallery"></a></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="entry-title">
-									<h2><a href="blog-single-thumbs.html">This is a Standard post with Fade Gallery</a></h2>
-								</div>
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 3rd Mar 2014</li>
-									<li><a href="blog-single-thumbs.html#comments"><i class="icon-comments"></i> 21</a></li>
-									<li><a href="#"><i class="icon-picture"></i></a></li>
-								</ul>
-								<div class="entry-content">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-									<a href="blog-single-thumbs.html"class="more-link">Read More</a>
-								</div>
-							</div>
-
+                                                    </c:forEach>    													
 						</div><!-- #posts end -->
 
 						<!-- Pagination

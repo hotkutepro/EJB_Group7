@@ -32,14 +32,10 @@
 
 						<ul>
 							<li class="current"><a href="<%=request.getContextPath() %>"><div>Home</div></a>
-								<ul>
-									<li><a href="/"><div>Home - Corporate</div></a>
-										<ul>
-											<li><a href="index-corporate.html"><div>Corporate - Layout 1</div></a></li>
-											<li><a href="index-corporate-2.html"><div>Corporate - Layout 2</div></a></li>
-										</ul>
-									</li>
-									<li><a href="index-app-showcase.html"><div>Home - App Showcase</div></a></li>
+								<ul>									
+                                                                    <c:forEach items="${categories}" var="category">
+                                                                        <li><a href="postByCategory?categoryId=${category.getCategoryID()}"><div>${category.getName()}</div></a></li>                                                                                        
+                                                                    </c:forEach> 									
 								</ul>
 							</li>
 							<li class=""><a href="search"><div>Search</div></a>

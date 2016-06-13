@@ -28,6 +28,10 @@
         <servlet-name>PostView</servlet-name>
         <servlet-class>uit.com.org.servlet.PostView</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>PostView</servlet-name>
+        <url-pattern>/admin/PostView</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>CommentView</servlet-name>
         <servlet-class>uit.com.org.servlet.CommentView</servlet-class>
@@ -35,6 +39,14 @@
     <servlet>
         <servlet-name>CommentController</servlet-name>
         <servlet-class>uit.com.org.servlet.CommentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>postdetail</servlet-name>
+        <servlet-class>uit.com.org.servlet.postdetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>postByCategory</servlet-name>
+        <servlet-class>uit.com.org.servlet.postByCategory</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MemberView</servlet-name>
@@ -73,10 +85,6 @@
         <url-pattern>/admin/PostController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PostView</servlet-name>
-        <url-pattern>/admin/PostView</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CommentView</servlet-name>
         <url-pattern>/CommentView</url-pattern>
     </servlet-mapping>
@@ -92,7 +100,15 @@
         <servlet-name>CommentController</servlet-name>
         <url-pattern>/admin/CommentController</url-pattern>
     </servlet-mapping>
-    <welcome-file-list>    
+    <servlet-mapping>
+        <servlet-name>postdetail</servlet-name>
+        <url-pattern>/postdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>postByCategory</servlet-name>
+        <url-pattern>/postByCategory</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
     <!-- contact -->
@@ -103,6 +119,16 @@
     <servlet-mapping>
         <servlet-name>contact</servlet-name>
         <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    <!-- login -->
+    <!-- contact -->
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <jsp-file>index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <!-- login -->
     <servlet>
@@ -149,18 +175,28 @@
         <servlet-name>about</servlet-name>
         <url-pattern>/about</url-pattern>
     </servlet-mapping>
-     <!--404--> 
-        <error-page>
-         <!--Missing resource--> 
+    <!--404-->
+    <error-page>
+        <!--Missing resource-->
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>
     <error-page>
-         <!--Missing login--> 
+        <!--Missing login-->
         <error-code>401</error-code>
         <location>/404.jsp</location>
     </error-page>
-     <!--admin/index--> 
+    
+     <servlet>
+        <servlet-name>category</servlet-name>
+        <jsp-file>category.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>category</servlet-name>
+        <url-pattern>/category</url-pattern> 
+    </servlet-mapping>
+    
+    <!--admin/index-->
     <servlet>
         <servlet-name>admin/index</servlet-name>
         <jsp-file>admin/index.jsp</jsp-file>
