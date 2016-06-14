@@ -7,19 +7,26 @@ package uit.com.org.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import uit.com.org.beans.CommentFacadeLocal;
 import uit.com.org.beans.PostFacadeLocal;
+import uit.com.org.entities.Comment;
 
 /**
  *
  * @author HomeSK
  */
 public class postdetail extends HttpServlet {
+
+    @EJB
+    private CommentFacadeLocal commentFacade;
 
     @EJB
     private PostFacadeLocal postFacade;
@@ -38,6 +45,9 @@ public class postdetail extends HttpServlet {
          String postId=request.getParameter("postid");              
         String url = "";
         request.setAttribute("post", postFacade.FindByPostID(postId));
+        List<Comment> comments=new ArrayList<Comment>();
+        comments=commentFacade.findByPost(postId);
+        request.setAttribute("comments", comments);
         url = "details";
         RequestDispatcher view = request.getRequestDispatcher(url);
         view.forward(request, response);

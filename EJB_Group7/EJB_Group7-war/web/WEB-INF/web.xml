@@ -28,6 +28,10 @@
         <servlet-name>PostView</servlet-name>
         <servlet-class>uit.com.org.servlet.PostView</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddComment</servlet-name>
+        <servlet-class>uit.com.org.servlet.AddComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PostView</servlet-name>
         <url-pattern>/admin/PostView</url-pattern>
@@ -108,6 +112,10 @@
         <servlet-name>postByCategory</servlet-name>
         <url-pattern>/postByCategory</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddComment</servlet-name>
+        <url-pattern>/AddComment</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
@@ -186,16 +194,14 @@
         <error-code>401</error-code>
         <location>/404.jsp</location>
     </error-page>
-    
-     <servlet>
+    <servlet>
         <servlet-name>category</servlet-name>
         <jsp-file>category.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>category</servlet-name>
-        <url-pattern>/category</url-pattern> 
+        <url-pattern>/category</url-pattern>
     </servlet-mapping>
-    
     <!--admin/index-->
     <servlet>
         <servlet-name>admin/index</servlet-name>

@@ -25,14 +25,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/NewServlet.java</file>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/CommentController.java</file>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/PostController.java</file>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/Login.java</file>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/web/admin/comment-view.jsp</file>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/MemberView.java</file>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/CommentView.java</file>
-            <file>file:/C:/Users/Quy.heo/Documents/NetBeansProjects/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/PostView.java</file>
+            <file>file:/F:/EJB_Group7.git/trunk/EJB_Group7/EJB_Group7-war/src/java/uit/com/org/servlet/AddComment.java</file>
+            <file>file:/F:/EJB_Group7.git/trunk/EJB_Group7/EJB_Group7-war/web/details.jsp</file>
         </group>
     </open-files>
 </project-private>

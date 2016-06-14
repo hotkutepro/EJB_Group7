@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -260,6 +261,39 @@
 								<!-- Comments List
 								============================================= -->
 								<ol class="commentlist clearfix">
+                                                                    <c:forEach items="${comments}" var="comment">                                                                        
+                                                                        <li class="comment byuser comment-author-_smcl_admin even thread-odd thread-alt depth-1" id="li-comment-2">
+
+										<div  class="comment-wrap clearfix">
+
+											<div class="comment-meta">
+
+												<div class="comment-author vcard">
+
+													<span class="comment-avatar clearfix">
+													<img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' /></span>
+
+												</div>
+
+											</div>
+
+											<div class="comment-content clearfix">
+
+												<div class="comment-author"><a href='http://themeforest.net/user/semicolonweb' rel='external nofollow' class='url'>${comment.getUserName()}</a><span><a href="#" title="Permalink to this comment">April 25, 2012 at 1:03 am</a></span></div>
+
+												<p>${comment.getCmtContent()}</p>
+
+												<a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
+
+											</div>
+
+											<div class="clear"></div>
+
+										</div>
+
+									</li>
+                                                                        
+                                                                    </c:forEach>
 
 									<li class="comment even thread-even depth-1" id="li-comment-1">
 
@@ -369,7 +403,7 @@
 
 									<h3>Leave a <span>Comment</span></h3>
 
-									<form class="clearfix" action="#" method="post" id="commentform">
+									<form class="clearfix" action="AddComment" method="post" id="commentform">
 
 										<div class="col_one_third">
 											<label for="author">Name</label>

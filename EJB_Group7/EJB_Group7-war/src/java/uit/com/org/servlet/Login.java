@@ -56,10 +56,10 @@ public class Login extends HttpServlet {
                         HttpSession session = request.getSession(true);
                         session.setAttribute("ssUser", userFacade.getSessionUser());
                         session.setAttribute("ssRole", userFacade.getSessionRole());
-                        //session.setAttribute("categories", categoryFacade.findAll());                        
-                        //session.setAttribute("posts", postFacade.findAll());
-                        request.setAttribute("categories", categoryFacade.findAll());
-                        request.setAttribute("posts", postFacade.findAll());
+                        session.setAttribute("categories", categoryFacade.findAll());                        
+                        session.setAttribute("posts", postFacade.findAll());                        
+                        //request.setAttribute("categories", categoryFacade.findAll());
+                        //request.setAttribute("posts", postFacade.findAll());
                         RequestDispatcher view = request.getRequestDispatcher("index");
                         view.forward(request, response);
                         url = "index";

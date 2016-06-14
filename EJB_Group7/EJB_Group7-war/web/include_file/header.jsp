@@ -31,7 +31,7 @@
 					<nav id="primary-menu">
 
 						<ul>
-							<li class="current"><a href="<%=request.getContextPath() %>"><div>Home</div></a>
+							<li class="current"><a href="index"><div>Home</div></a>
 								<ul>									
                                                                     <c:forEach items="${categories}" var="category">
                                                                         <li><a href="postByCategory?categoryId=${category.getCategoryID()}"><div>${category.getName()}</div></a></li>                                                                                        

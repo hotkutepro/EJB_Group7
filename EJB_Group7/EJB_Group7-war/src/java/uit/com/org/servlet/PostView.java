@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import uit.com.org.beans.CategoryFacadeLocal;
 import uit.com.org.beans.PostFacadeLocal;
 
@@ -41,6 +42,9 @@ public class PostView extends HttpServlet {
         processRequest(request, response);
         String postId=request.getParameter("postid");        
         PrintWriter out = response.getWriter();
+        request.getSession().invalidate();
+        HttpSession session=request.getSession(true);
+        session.setAttribute("postid", postId);
         out.print(postId);
         String url = "";
         request.setAttribute("post", postFacade.FindByPostID(postId));
